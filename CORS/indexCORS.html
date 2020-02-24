@@ -1,0 +1,40 @@
+ 
+	 
+	 
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kitten!</title>
+	<meta charset="utf-8" />
+	<script type="text/javascript">
+
+	function fetchJSON(){
+		var xmlhttp = new XMLHttpRequest();
+var url = "https://2019corstest.s3.eu-west-3.amazonaws.com/myjson.json";
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        myFunction(myArr);
+    }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction(arr) {
+  console.log(arr.nom)
+    document.getElementById("id01").value = arr.nom;
+}
+	}
+ 
+	</script>
+</head>
+<body>
+
+		<input type="button" value="afficher" onclick="fetchJSON();">
+		<input type="text" id="id01">
+ 
+	
+
+</body>
+</html>
